@@ -1,0 +1,61 @@
+.statsSection {
+  padding: 45px 8%;
+
+  background: white;
+
+  border-top: 1px solid #e5e7eb;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.statsContainer {
+  max-width: 1100px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.statBox {
+  text-align: center;
+
+  padding: 20px;
+
+  border-right: 1px solid #e5e7eb;
+}
+
+.statBox:last-child {
+  border-right: none;
+}
+
+.statBox h2 {
+  margin: 0 0 6px;
+
+  font-size: 32px;
+
+  color: #2563eb;
+}
+
+.statBox p {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: #64748b;
+}
+
+@media (max-width: 700px) {
+
+  .statsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statBox {
+    border-right: none;
+  }
+
+}

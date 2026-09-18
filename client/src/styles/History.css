@@ -1,0 +1,144 @@
+.historyPage {
+  min-height: 100vh;
+  padding: 130px 8% 60px;
+  background: #f5f9fd;
+}
+
+.historyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.historyEyebrow {
+  color: #1976d2;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.historyHeader h1 {
+  margin: 0;
+  color: #12304a;
+  font-size: 38px;
+}
+
+.historyHeader p {
+  color: #6b7c8f;
+  margin-top: 8px;
+}
+
+.newScanBtn {
+  display: inline-block;
+  text-decoration: none;
+  background: #1976d2;
+  color: white;
+  padding: 13px 22px;
+  border-radius: 9px;
+  font-weight: 600;
+}
+
+.newScanBtn:hover {
+  background: #125ca8;
+}
+
+.historyCard {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 30px rgba(24, 70, 110, 0.08);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.historyTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.historyTable th {
+  text-align: left;
+  padding: 16px;
+  background: #f4f8fc;
+  color: #52677a;
+  font-size: 14px;
+}
+
+.historyTable td {
+  padding: 17px 16px;
+  border-bottom: 1px solid #edf2f7;
+  color: #34495e;
+}
+
+.imageName {
+  font-size: 14px;
+}
+
+.predictionBadge {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+  background: #eaf3ff;
+  color: #1769aa;
+}
+
+.predictionBadge.notumor {
+  background: #eaf8ef;
+  color: #218a4a;
+}
+
+.predictionBadge.meningioma,
+.predictionBadge.glioma,
+.predictionBadge.pituitary {
+  background: #fff4e8;
+  color: #c66a00;
+}
+
+.historyMessage {
+  text-align: center;
+  padding: 70px 20px;
+  color: #607589;
+}
+
+.historyMessage.error {
+  color: #d64545;
+}
+
+.emptyHistory {
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.emptyIcon {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.emptyHistory h2 {
+  color: #183b56;
+  margin-bottom: 8px;
+}
+
+.emptyHistory p {
+  color: #718397;
+  margin-bottom: 25px;
+}
+
+@media (max-width: 900px) {
+  .historyHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .historyHeader h1 {
+    font-size: 32px;
+  }
+}

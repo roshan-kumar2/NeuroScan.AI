@@ -1,0 +1,77 @@
+.diseases {
+  padding: 90px 8%;
+
+  background: #f7f9fc;
+
+  color: #172033;
+}
+
+.diseaseGrid {
+  max-width: 1050px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.diseaseCard {
+  background: white;
+
+  padding: 28px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 12px;
+
+  transition: 0.3s;
+}
+
+.diseaseCard:hover {
+  transform: translateY(-4px);
+
+  border-color: #93c5fd;
+}
+
+.diseaseNumber {
+  color: #2563eb;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  margin-bottom: 25px;
+}
+
+.diseaseCard h3 {
+  font-size: 19px;
+
+  margin-bottom: 12px;
+}
+
+.diseaseCard p {
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+
+  .diseaseGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .diseaseGrid {
+    grid-template-columns: 1fr;
+  }
+
+}

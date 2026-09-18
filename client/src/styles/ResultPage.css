@@ -1,0 +1,527 @@
+/* =========================================================
+   NEUROSCAN.AI - MRI RESULT PAGE
+   ========================================================= */
+
+.result-page {
+  min-height: 100vh;
+
+  padding: 110px 6% 60px;
+
+  background: #f3f8fd;
+
+  color: #071b49;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN RESULT CARD
+   ========================================================= */
+
+.result-card {
+  width: 100%;
+
+  max-width: 1150px;
+
+  margin: 0 auto;
+
+  padding: 35px;
+
+  background: #ffffff;
+
+  border: 1px solid #dce7f2;
+
+  border-radius: 14px;
+
+  box-shadow: 0 12px 40px rgba(30, 75, 120, 0.08);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.result-brand {
+  color: #183f6b;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+
+  margin-bottom: 2px;
+}
+
+.result-brand span {
+  color: #087cff;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.result-label {
+  color: #087cff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.result-card > h1 {
+  margin: 0 0 28px;
+
+  color: #071b49;
+
+  font-size: 38px;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   MRI IMAGE
+   ========================================================= */
+
+.result-image-box {
+  width: 100%;
+
+  height: 400px;
+
+  padding: 15px;
+
+  margin-bottom: 28px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #f4f8fc;
+
+  border: 1px solid #dbe6f0;
+
+  border-radius: 10px;
+}
+
+
+.result-image-box img {
+  display: block;
+
+  max-width: 100%;
+
+  max-height: 100%;
+
+  width: auto;
+
+  height: auto;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  margin: auto;
+
+  border-radius: 6px;
+}
+
+
+/* =========================================================
+   PREDICTION
+   ========================================================= */
+
+.prediction-box {
+  padding: 22px;
+
+  margin-bottom: 22px;
+
+  border: 1px solid #dce8f3;
+
+  border-radius: 10px;
+
+  background: #f8fbfe;
+}
+
+
+.prediction-box > span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #087cff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+.prediction-box h2 {
+  margin: 0 0 8px;
+
+  color: #071b49;
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  text-transform: capitalize;
+}
+
+
+.prediction-box p {
+  margin: 0;
+
+  color: #607792;
+
+  font-size: 14px;
+}
+
+
+.prediction-box p strong {
+  color: #087cff;
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   PROBABILITIES
+   ========================================================= */
+
+.probability-section {
+  margin-top: 25px;
+
+  padding: 24px;
+
+  border: 1px solid #dce8f3;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+
+.probability-section h3 {
+  margin: 0 0 20px;
+
+  color: #071b49;
+
+  font-size: 18px;
+
+  font-weight: 800;
+}
+
+
+.probability-row {
+  min-height: 43px;
+
+  padding: 10px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid #edf2f7;
+
+  box-sizing: border-box;
+}
+
+
+.probability-row:last-child {
+  border-bottom: none;
+}
+
+
+.probability-row span {
+  color: #45617e;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  text-transform: capitalize;
+}
+
+
+.probability-row strong {
+  color: #071b49;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   MEDICAL WARNING
+   ========================================================= */
+
+.result-warning {
+  margin-top: 24px;
+
+  padding: 17px 20px;
+
+  border: 1px solid #d8e7f3;
+
+  border-radius: 9px;
+
+  background: #edf6fd;
+}
+
+
+.result-warning strong {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #294c72;
+
+  font-size: 13px;
+}
+
+
+.result-warning p {
+  margin: 0;
+
+  color: #607994;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.result-actions {
+  margin-top: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.result-primary,
+.result-secondary {
+  min-height: 45px;
+
+  padding: 0 22px;
+
+  border-radius: 7px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  transition: 0.2s ease;
+
+  cursor: pointer;
+}
+
+
+.result-primary {
+  border: 1px solid #087cff;
+
+  background: #087cff;
+
+  color: #ffffff;
+
+  box-shadow: 0 5px 15px rgba(8, 124, 255, 0.15);
+}
+
+
+.result-primary:hover {
+  background: #066fd9;
+
+  border-color: #066fd9;
+}
+
+
+.result-secondary {
+  border: 1px solid #087cff;
+
+  background: #ffffff;
+
+  color: #087cff;
+}
+
+
+.result-secondary:hover {
+  background: #edf6ff;
+}
+
+
+/* =========================================================
+   NO RESULT PAGE
+   ========================================================= */
+
+.result-empty {
+  min-height: 100vh;
+
+  padding: 110px 20px 50px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #f3f8fd;
+}
+
+
+.result-empty-card {
+  width: 90%;
+
+  max-width: 480px;
+
+  padding: 40px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #dce7f2;
+
+  border-radius: 14px;
+
+  box-shadow: 0 12px 40px rgba(30, 75, 120, 0.08);
+}
+
+
+.result-empty-icon {
+  font-size: 45px;
+
+  margin-bottom: 15px;
+}
+
+
+.result-empty-card h2 {
+  margin: 0 0 10px;
+
+  color: #071b49;
+
+  font-size: 24px;
+}
+
+
+.result-empty-card p {
+  margin: 0 0 22px;
+
+  color: #647994;
+
+  font-size: 13px;
+}
+
+
+.result-empty-card button {
+  height: 44px;
+
+  padding: 0 22px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #087cff;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .result-page {
+    padding: 100px 20px 45px;
+  }
+
+  .result-card {
+    padding: 24px;
+  }
+
+  .result-card > h1 {
+    font-size: 30px;
+  }
+
+  .result-image-box {
+    height: 320px;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .result-page {
+    padding: 90px 12px 35px;
+  }
+
+  .result-card {
+    padding: 18px;
+  }
+
+  .result-card > h1 {
+    font-size: 25px;
+  }
+
+  .result-image-box {
+    height: 270px;
+  }
+
+  .result-actions {
+    flex-direction: column;
+  }
+
+  .result-primary,
+  .result-secondary {
+    width: 100%;
+  }
+}

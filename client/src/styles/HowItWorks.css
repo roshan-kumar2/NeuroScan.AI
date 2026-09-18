@@ -1,0 +1,230 @@
+.how-section {
+
+  width: 100%;
+
+  padding: 20px 0 45px;
+
+  background: #edf6fd;
+
+  color: #071b49;
+}
+
+
+/* ================= HEADING ================= */
+
+.how-heading {
+
+  text-align: center;
+
+  margin-bottom: 27px;
+}
+
+.how-heading h2 {
+
+  margin: 0 0 5px;
+
+  color: #071b49;
+
+  font-size: 36px;
+
+  line-height: 1.15;
+
+  font-weight: 800;
+}
+
+.how-heading p {
+
+  margin: 0;
+
+  color: #526987;
+
+  font-size: 15px;
+}
+
+
+/* ================= STEPS ================= */
+
+.steps-container {
+
+  width: 84%;
+  max-width: 1180px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 25px;
+}
+
+
+/* ================= STEP ================= */
+
+.step {
+
+  width: 330px;
+
+  position: relative;
+}
+
+.step-top {
+
+  height: 30px;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.step-number {
+
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  background: #087cff;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+/* ================= BODY ================= */
+
+.step-body {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+}
+
+.step-icon {
+
+  width: 74px;
+  height: 74px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e1f0ff;
+
+  color: #087cff;
+
+  font-size: 36px;
+
+  font-weight: 700;
+}
+
+.step-content h3 {
+
+  margin: 0 0 7px;
+
+  color: #071b49;
+
+  font-size: 16px;
+
+  font-weight: 800;
+}
+
+.step-content p {
+
+  margin: 0;
+
+  color: #526987;
+
+  font-size: 13px;
+
+  line-height: 1.45;
+}
+
+
+/* ================= ARROW ================= */
+
+.step-arrow {
+
+  color: #7193bb;
+
+  font-size: 34px;
+
+  font-weight: 300;
+
+  flex-shrink: 0;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1000px) {
+
+  .steps-container {
+
+    gap: 15px;
+  }
+
+  .step {
+    width: 280px;
+  }
+
+  .step-body {
+    gap: 10px;
+  }
+
+  .step-icon {
+    width: 62px;
+    height: 62px;
+    font-size: 29px;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 750px) {
+
+  .how-section {
+    padding: 45px 0;
+  }
+
+  .how-heading h2 {
+    font-size: 30px;
+  }
+
+  .steps-container {
+
+    width: 90%;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .step {
+
+    width: 100%;
+
+    max-width: 400px;
+  }
+
+  .step-arrow {
+
+    transform: rotate(90deg);
+  }
+}

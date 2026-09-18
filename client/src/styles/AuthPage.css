@@ -1,0 +1,251 @@
+/* =========================================================
+   NEUROSCAN.AI
+   LOGIN / SIGNUP PAGE
+   ========================================================= */
+
+.authPage {
+  min-height: 100vh;
+
+  padding-top: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f3f8fd 0%,
+      #eef6ff 50%,
+      #f7fbff 100%
+    );
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   AUTH CARD
+   ========================================================= */
+
+.authCard {
+  width: 430px;
+
+  max-width: calc(100% - 40px);
+
+  padding: 38px 42px 34px;
+
+  background: #ffffff;
+
+  border: 1px solid #dce8f3;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 15px 45px rgba(30, 80, 130, 0.10);
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.authLogo {
+  width: 62px;
+  height: 62px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #edf6ff;
+
+  font-size: 32px;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.authCard h1 {
+  margin: 0 0 7px;
+
+  color: #071b49;
+
+  font-size: 29px;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+}
+
+
+.authCard > p {
+  margin: 0 0 27px;
+
+  color: #71859d;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.authCard form {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  text-align: left;
+}
+
+
+.authCard form label {
+  margin: 0 0 7px;
+
+  color: #294d70;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.authCard form input {
+  width: 100%;
+
+  height: 46px;
+
+  margin-bottom: 17px;
+
+  padding: 0 14px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #cfddea;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #173b60;
+
+  font-size: 13px;
+
+  transition: 0.2s ease;
+}
+
+
+.authCard form input::placeholder {
+  color: #9aaabd;
+}
+
+
+.authCard form input:focus {
+  border-color: #087cff;
+
+  box-shadow:
+    0 0 0 3px rgba(8, 124, 255, 0.10);
+}
+
+
+/* =========================================================
+   LOGIN / SIGNUP BUTTON
+   ========================================================= */
+
+.authButton {
+  width: 100%;
+
+  height: 47px;
+
+  margin-top: 4px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #087cff;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 18px rgba(8, 124, 255, 0.18);
+
+  transition: 0.2s ease;
+}
+
+
+.authButton:hover {
+  background: #066fd9;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 9px 22px rgba(8, 124, 255, 0.23);
+}
+
+
+/* =========================================================
+   SWITCH LOGIN / SIGNUP
+   ========================================================= */
+
+.authSwitch {
+  margin: 21px 0 0 !important;
+
+  color: #71859d !important;
+
+  font-size: 12px !important;
+
+  text-align: center;
+}
+
+
+.authSwitch a {
+  color: #087cff;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+
+.authSwitch a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+  .authCard {
+    padding: 30px 25px 28px;
+  }
+
+  .authCard h1 {
+    font-size: 25px;
+  }
+}

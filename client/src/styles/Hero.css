@@ -1,0 +1,556 @@
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero-section {
+  width: 100%;
+
+  height: 510px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background: #edf6fd;
+}
+
+
+/* =========================================================
+   MRI IMAGE
+   ========================================================= */
+
+.hero-image {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 66%;
+  height: 100%;
+
+  z-index: 1;
+
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  /*
+     COMPLETE IMAGE.
+     NO CROPPING.
+  */
+
+  object-fit: contain;
+
+  object-position: right center;
+}
+
+
+/* =========================================================
+   IMAGE FADE
+   ========================================================= */
+
+.hero-image-fade {
+  position: absolute;
+
+  top: 0;
+  left: 30%;
+
+  width: 35%;
+  height: 100%;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    #edf6fd 0%,
+    rgba(237,246,253,0.96) 18%,
+    rgba(237,246,253,0.72) 42%,
+    rgba(237,246,253,0.25) 72%,
+    rgba(237,246,253,0) 100%
+  );
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.hero-container {
+  width: 84%;
+  max-width: 1320px;
+
+  height: 100%;
+
+  margin: 0 auto;
+
+  position: relative;
+
+  z-index: 5;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.hero-content {
+  width: 48%;
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  z-index: 10;
+}
+
+.hero-label {
+  margin-bottom: 12px;
+
+  color: #087cff;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+}
+
+.hero-content h1 {
+  margin: 0 0 17px;
+
+  color: #071b49;
+
+  font-size: 57px;
+
+  line-height: 1.02;
+
+  letter-spacing: -2px;
+
+  font-weight: 800;
+}
+
+.hero-content h1 span {
+  color: #087cff;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.hero-description {
+  margin: 0 0 23px;
+
+  color: #17365f;
+
+  font-size: 16px;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.hero-buttons {
+  display: flex;
+
+  gap: 12px;
+
+  margin-bottom: 23px;
+}
+
+.primary-btn,
+.secondary-btn {
+
+  height: 54px;
+
+  padding: 0 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  border-radius: 6px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.primary-btn {
+  color: #ffffff;
+
+  background: #087cff;
+
+  border: 1px solid #087cff;
+
+  box-shadow:
+    0 7px 18px rgba(8,124,255,0.18);
+}
+
+.primary-btn:hover {
+  background: #066fd9;
+
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  color: #087cff;
+
+  background: rgba(255,255,255,0.9);
+
+  border: 1px solid #087cff;
+}
+
+.secondary-btn:hover {
+  background: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+.primary-btn span,
+.secondary-btn span {
+  font-size: 19px;
+}
+
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.hero-stats {
+  display: flex;
+
+  gap: 11px;
+
+  margin-bottom: 18px;
+}
+
+.stat-box {
+
+  width: 128px;
+  height: 80px;
+
+  box-sizing: border-box;
+
+  padding: 11px 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.94);
+
+  border: 1px solid #dce8f5;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 4px 15px rgba(30,80,130,0.05);
+}
+
+.stat-box strong {
+
+  color: #087cff;
+
+  font-size: 22px;
+
+  line-height: 1;
+
+  margin-bottom: 6px;
+}
+
+.stat-box span {
+
+  color: #344e73;
+
+  font-size: 10px;
+
+  line-height: 1.2;
+}
+
+
+/* =========================================================
+   SECURITY
+   ========================================================= */
+
+.hero-security {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #425d7f;
+
+  font-size: 12px;
+}
+
+.hero-security span {
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   HANDWRITTEN MESSAGE
+   ========================================================= */
+
+.hero-message {
+
+  position: absolute;
+
+  left: 37%;
+
+  top: 74px;
+
+  z-index: 8;
+
+  display: flex;
+
+  flex-direction: column;
+
+  color: #6d8eb8;
+
+  font-family: "Segoe Print", "Bradley Hand", cursive;
+
+  font-size: 24px;
+
+  line-height: 1.35;
+
+  transform: rotate(-7deg);
+
+  opacity: 0.9;
+}
+
+.hero-message span:nth-child(2) {
+  margin-left: 12px;
+}
+
+.hero-message span:nth-child(3) {
+  margin-left: 5px;
+}
+
+.hero-message span:nth-child(4) {
+  margin-left: 17px;
+}
+
+.hero-message i {
+
+  width: 75px;
+  height: 3px;
+
+  margin-left: 25px;
+  margin-top: 2px;
+
+  background: #6d8eb8;
+
+  transform: rotate(-10deg);
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   LARGE SCREEN
+   ========================================================= */
+
+@media (min-width: 1450px) {
+
+  .hero-section {
+    height: 520px;
+  }
+
+  .hero-content h1 {
+    font-size: 61px;
+  }
+
+  .hero-image {
+    width: 67%;
+  }
+
+  .hero-message {
+    left: 38%;
+  }
+}
+
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .hero-container {
+    width: 90%;
+  }
+
+  .hero-content {
+    width: 52%;
+  }
+
+  .hero-content h1 {
+    font-size: 49px;
+  }
+
+  .hero-image {
+    width: 65%;
+  }
+
+  .hero-message {
+    display: none;
+  }
+
+  .stat-box {
+    width: 110px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .hero-section {
+    height: auto;
+
+    min-height: 760px;
+  }
+
+  .hero-image {
+
+    width: 100%;
+
+    height: 430px;
+
+    top: auto;
+    bottom: 0;
+
+    opacity: 0.28;
+  }
+
+  .hero-image-fade {
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+      linear-gradient(
+        180deg,
+        #edf6fd 0%,
+        rgba(237,246,253,0.82) 55%,
+        rgba(237,246,253,0.25) 100%
+      );
+  }
+
+  .hero-container {
+    width: 90%;
+    height: auto;
+
+    min-height: 760px;
+  }
+
+  .hero-content {
+
+    width: 100%;
+
+    position: relative;
+
+    top: auto;
+    left: auto;
+
+    transform: none;
+
+    padding-top: 65px;
+  }
+
+  .hero-content h1 {
+    font-size: 45px;
+  }
+
+  .hero-message {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 550px) {
+
+  .hero-section {
+    min-height: 720px;
+  }
+
+  .hero-container {
+    min-height: 720px;
+  }
+
+  .hero-content {
+    padding-top: 45px;
+  }
+
+  .hero-content h1 {
+    font-size: 38px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .desktop-break {
+    display: none;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+  }
+
+  .hero-stats {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 9px;
+  }
+
+  .stat-box {
+    width: 100%;
+  }
+
+  .hero-image {
+    height: 350px;
+  }
+}

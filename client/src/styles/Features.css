@@ -1,0 +1,164 @@
+.features-section {
+
+  width: 100%;
+
+  background: #ffffff;
+
+  padding: 26px 0 27px;
+
+  border-bottom: 1px solid #edf2f7;
+}
+
+.features-container {
+
+  width: 84%;
+  max-width: 1320px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+}
+
+
+/* ================= ITEM ================= */
+
+.feature-item {
+
+  min-height: 95px;
+
+  padding: 0 27px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  border-right: 1px solid #d8e3ef;
+}
+
+.feature-item:first-child {
+  padding-left: 0;
+}
+
+.feature-item:last-child {
+
+  border-right: none;
+
+  padding-right: 0;
+}
+
+
+/* ================= ICON ================= */
+
+.feature-icon {
+
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eaf4ff;
+
+  color: #087cff;
+
+  font-size: 26px;
+
+  font-weight: 700;
+}
+
+
+/* ================= TEXT ================= */
+
+.feature-content h3 {
+
+  margin: 0 0 6px;
+
+  color: #071b49;
+
+  font-size: 16px;
+
+  font-weight: 800;
+}
+
+.feature-content p {
+
+  margin: 0;
+
+  max-width: 210px;
+
+  color: #526987;
+
+  font-size: 12px;
+
+  line-height: 1.45;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1000px) {
+
+  .features-container {
+
+    grid-template-columns: repeat(2, 1fr);
+
+    row-gap: 25px;
+  }
+
+  .feature-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .feature-item:nth-child(3) {
+    padding-left: 0;
+  }
+
+  .feature-item:nth-child(4) {
+    padding-right: 0;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .features-section {
+    padding: 30px 0;
+  }
+
+  .features-container {
+
+    width: 90%;
+
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .feature-item {
+
+    padding: 0 !important;
+
+    border-right: none !important;
+
+    border-bottom: 1px solid #d8e3ef;
+
+    padding-bottom: 20px !important;
+  }
+
+  .feature-item:last-child {
+    border-bottom: none !important;
+  }
+}
