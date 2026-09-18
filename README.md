@@ -330,7 +330,7 @@ No Tumor probability
 
 Pituitary probability
 
-Scan creation time                       ┌─────────────────────┐
+Scan creation time       ┌─────────────────────┐
 
 &#x20;                   │      User           │
 
@@ -390,7 +390,9 @@ Scan creation time                       ┌────────────
 
 &#x20;       │ + Probabilities │
 
-&#x20;       └─────────────────┘🛠️ Technologies Used
+&#x20;       └─────────────────┘
+
+🛠️ Technologies Used
 
 Frontend
 
@@ -449,6 +451,7 @@ Git
 GitHub
 
 Vite Development Server
+
 
 📁 Project Structure
 
