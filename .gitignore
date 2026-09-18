@@ -1,0 +1,43 @@
+# Node.js
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build files
+dist/
+client/dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Python virtual environments
+.venv/
+venv/
+env/
+tf_env/
+server/tf_env/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
