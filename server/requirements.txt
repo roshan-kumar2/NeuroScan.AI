@@ -2,5 +2,5 @@ Flask
 flask-cors
 numpy
 Pillow
-tensorflow
+ai-edge-litert
 gunicorn

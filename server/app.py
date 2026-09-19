@@ -1,11 +1,12 @@
 import os
 import json
 import numpy as np
-import tensorflow as tf
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from PIL import Image
+
+from ai_edge_litert.interpreter import Interpreter
 
 from database import (
     init_database,
@@ -15,25 +16,19 @@ from database import (
 )
 
 
-# ============================================================
-# FLASK APP
-# ============================================================
-
 app = Flask(__name__)
 CORS(app)
 
 
-# ============================================================
+# --------------------------------------------------
 # PATHS
-# ============================================================
+# --------------------------------------------------
 
-BASE_DIR = os.path.dirname(
-    os.path.abspath(__file__)
-)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 MODEL_PATH = os.path.join(
     BASE_DIR,
-    "neuroscan_model.keras"
+    "neuroscan_model.tflite"
 )
 
 CLASS_NAMES_PATH = os.path.join(
@@ -42,72 +37,60 @@ CLASS_NAMES_PATH = os.path.join(
 )
 
 
-# ============================================================
-# LOAD MODEL
-# ============================================================
+# --------------------------------------------------
+# LOAD LITERT MODEL
+# --------------------------------------------------
 
-print("")
-print("=" * 60)
-print("Loading NeuroScan.AI model...")
-print("=" * 60)
+print("Loading NeuroScan.AI LiteRT model...")
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "neuroscan_model.keras")
-CLASS_NAMES_PATH = os.path.join(BASE_DIR, "class_names.json")
-
-tf.config.threading.set_intra_op_parallelism_threads(1)
-tf.config.threading.set_inter_op_parallelism_threads(1)
-
-model = tf.keras.models.load_model(
-    MODEL_PATH,
-    compile=False
+interpreter = Interpreter(
+    model_path=MODEL_PATH
 )
 
-print("Model loaded successfully.")
+interpreter.allocate_tensors()
+
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+print("LiteRT model loaded successfully.")
+
+print(
+    "Input shape:",
+    input_details[0]["shape"]
+)
+
+print(
+    "Output shape:",
+    output_details[0]["shape"]
+)
 
 
-# ============================================================
+# --------------------------------------------------
 # LOAD CLASS NAMES
-# ============================================================
+# --------------------------------------------------
 
-with open(
-    CLASS_NAMES_PATH,
-    "r"
-) as f:
-
+with open(CLASS_NAMES_PATH, "r") as f:
     CLASS_NAMES = json.load(f)
 
 
 print("Classes:", CLASS_NAMES)
 
 
-# ============================================================
-# INITIALIZE DATABASE
-# ============================================================
+# --------------------------------------------------
+# DATABASE
+# --------------------------------------------------
 
 init_database()
 
-print("Database initialized successfully.")
+
+IMAGE_SIZE = (224, 224)
 
 
-# ============================================================
-# IMAGE SIZE
-# ============================================================
+# --------------------------------------------------
+# HOME / HEALTH CHECK
+# --------------------------------------------------
 
-IMAGE_SIZE = (
-    224,
-    224
-)
-
-
-# ============================================================
-# HOME / API STATUS
-# ============================================================
-
-@app.route(
-    "/",
-    methods=["GET"]
-)
+@app.route("/", methods=["GET"])
 def home():
 
     return jsonify({
@@ -117,21 +100,18 @@ def home():
     })
 
 
-# ============================================================
-# PREDICT MRI
-# ============================================================
+# --------------------------------------------------
+# PREDICTION
+# --------------------------------------------------
 
-@app.route(
-    "/predict",
-    methods=["POST"]
-)
+@app.route("/predict", methods=["POST"])
 def predict():
 
     try:
 
-        # ----------------------------------------------------
-        # CHECK FILE
-        # ----------------------------------------------------
+        # ------------------------------------------
+        # CHECK IMAGE
+        # ------------------------------------------
 
         if "image" not in request.files:
 
@@ -152,37 +132,25 @@ def predict():
             }), 400
 
 
-        # ----------------------------------------------------
+        # ------------------------------------------
         # OPEN IMAGE
-        # ----------------------------------------------------
+        # ------------------------------------------
 
-        image = Image.open(
-            file.stream
-        )
+        image = Image.open(file.stream)
 
+        image = image.convert("RGB")
 
-        # Convert image to RGB
-
-        image = image.convert(
-            "RGB"
-        )
+        image = image.resize(IMAGE_SIZE)
 
 
-        # Resize to model input size
-
-        image = image.resize(
-            IMAGE_SIZE
-        )
-
-
-        # Convert to NumPy
+        # ------------------------------------------
+        # PREPARE INPUT
+        # ------------------------------------------
 
         image_array = np.array(
-            image
+            image,
+            dtype=np.float32
         )
-
-
-        # Add batch dimension
 
         image_array = np.expand_dims(
             image_array,
@@ -190,77 +158,57 @@ def predict():
         )
 
 
-        # ----------------------------------------------------
-        # MODEL PREDICTION
-        # ----------------------------------------------------
-        #
-        # IMPORTANT:
-        #
-        # EfficientNetB0 model was trained with preprocessing
-        # inside the model pipeline.
-        #
-        # Therefore we DO NOT apply an additional
-        # preprocess_input() here.
-        #
-        # ----------------------------------------------------
+        # ------------------------------------------
+        # LITERT INFERENCE
+        # ------------------------------------------
 
-        predictions = model.predict(
-            image_array,
-            verbose=0
+        interpreter.set_tensor(
+            input_details[0]["index"],
+            image_array
+        )
+
+        interpreter.invoke()
+
+
+        predictions = interpreter.get_tensor(
+            output_details[0]["index"]
         )
 
 
         probabilities = predictions[0]
 
 
-        # ----------------------------------------------------
-        # FIND PREDICTED CLASS
-        # ----------------------------------------------------
+        # ------------------------------------------
+        # PREDICTION
+        # ------------------------------------------
 
         predicted_index = int(
             np.argmax(probabilities)
         )
-
 
         predicted_class = CLASS_NAMES[
             predicted_index
         ]
 
 
-        # ----------------------------------------------------
-        # CONFIDENCE
-        # ----------------------------------------------------
-
         confidence = float(
-            probabilities[
-                predicted_index
-            ] * 100
+            probabilities[predicted_index] * 100
         )
 
 
-        # ----------------------------------------------------
-        # ALL CLASS PROBABILITIES
-        # ----------------------------------------------------
+        # ------------------------------------------
+        # CLASS PROBABILITIES
+        # ------------------------------------------
 
         class_probabilities = {}
 
-        for i, class_name in enumerate(
-            CLASS_NAMES
-        ):
+        for i, class_name in enumerate(CLASS_NAMES):
 
-            class_probabilities[
-                class_name
-            ] = round(
-                float(
-                    probabilities[i] * 100
-                ),
+            class_probabilities[class_name] = round(
+                float(probabilities[i] * 100),
                 2
             )
 
-
-        # ----------------------------------------------------
-        # GET INDIVIDUAL PROBABILITIES
-        # ----------------------------------------------------
 
         glioma_probability = class_probabilities.get(
             "glioma",
@@ -283,9 +231,9 @@ def predict():
         )
 
 
-        # ----------------------------------------------------
-        # SAVE RESULT TO DATABASE
-        # ----------------------------------------------------
+        # ------------------------------------------
+        # SAVE TO DATABASE
+        # ------------------------------------------
 
         scan_id = save_scan(
 
@@ -308,9 +256,9 @@ def predict():
         )
 
 
-        # ----------------------------------------------------
-        # RETURN RESULT
-        # ----------------------------------------------------
+        # ------------------------------------------
+        # RESPONSE
+        # ------------------------------------------
 
         return jsonify({
 
@@ -327,7 +275,6 @@ def predict():
 
             "probabilities":
                 class_probabilities
-
         })
 
 
@@ -338,7 +285,6 @@ def predict():
             str(e)
         )
 
-
         return jsonify({
 
             "success": False,
@@ -348,20 +294,16 @@ def predict():
         }), 500
 
 
-# ============================================================
-# GET ALL SCAN HISTORY
-# ============================================================
+# --------------------------------------------------
+# HISTORY
+# --------------------------------------------------
 
-@app.route(
-    "/history",
-    methods=["GET"]
-)
+@app.route("/history", methods=["GET"])
 def history():
 
     try:
 
         scans = get_all_scans()
-
 
         return jsonify({
 
@@ -371,14 +313,12 @@ def history():
 
         })
 
-
     except Exception as e:
 
         print(
             "History error:",
             str(e)
         )
-
 
         return jsonify({
 
@@ -389,17 +329,15 @@ def history():
         }), 500
 
 
-# ============================================================
-# GET SINGLE SCAN
-# ============================================================
+# --------------------------------------------------
+# HISTORY DETAIL
+# --------------------------------------------------
 
 @app.route(
     "/history/<int:scan_id>",
     methods=["GET"]
 )
-def history_detail(
-    scan_id
-):
+def history_detail(scan_id):
 
     try:
 
@@ -408,7 +346,7 @@ def history_detail(
         )
 
 
-        if not scan:
+        if scan is None:
 
             return jsonify({
 
@@ -435,7 +373,6 @@ def history_detail(
             str(e)
         )
 
-
         return jsonify({
 
             "success": False,
@@ -445,9 +382,9 @@ def history_detail(
         }), 500
 
 
-# ============================================================
-# RUN SERVER
-# ============================================================
+# --------------------------------------------------
+# START SERVER
+# --------------------------------------------------
 
 if __name__ == "__main__":
 
@@ -457,16 +394,6 @@ if __name__ == "__main__":
             5000
         )
     )
-
-    print("")
-    print("=" * 60)
-    print("NeuroScan.AI Backend")
-    print("=" * 60)
-    print(
-        f"Server running on port: {port}"
-    )
-    print("=" * 60)
-    print("")
 
     app.run(
         host="0.0.0.0",
