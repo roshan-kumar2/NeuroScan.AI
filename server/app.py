@@ -443,25 +443,25 @@ def history_detail(
 
 if __name__ == "__main__":
 
+    port = int(
+        os.environ.get(
+            "PORT",
+            5000
+        )
+    )
+
     print("")
     print("=" * 60)
     print("NeuroScan.AI Backend")
     print("=" * 60)
     print(
-        "Server: http://127.0.0.1:5000"
-    )
-    print(
-        "Prediction: http://127.0.0.1:5000/predict"
-    )
-    print(
-        "History: http://127.0.0.1:5000/history"
+        f"Server running on port: {port}"
     )
     print("=" * 60)
     print("")
 
-
     app.run(
-        host="127.0.0.1",
-        port=5000,
-        debug=True
+        host="0.0.0.0",
+        port=port,
+        debug=False
     )
