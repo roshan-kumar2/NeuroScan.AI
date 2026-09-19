@@ -51,8 +51,16 @@ print("=" * 60)
 print("Loading NeuroScan.AI model...")
 print("=" * 60)
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "neuroscan_model.keras")
+CLASS_NAMES_PATH = os.path.join(BASE_DIR, "class_names.json")
+
+tf.config.threading.set_intra_op_parallelism_threads(1)
+tf.config.threading.set_inter_op_parallelism_threads(1)
+
 model = tf.keras.models.load_model(
-    MODEL_PATH
+    MODEL_PATH,
+    compile=False
 )
 
 print("Model loaded successfully.")

@@ -14,9 +14,9 @@ function History() {
 
   const fetchHistory = async () => {
     try {
-      const response = await axios.get(
-        "http://127.0.0.1:5000/history"
-      );
+     const response = await axios.get(
+  "https://neuroscan-ai-4glb.onrender.com/history"
+);
 
       if (response.data.success) {
         setScans(response.data.scans);

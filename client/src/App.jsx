@@ -77,10 +77,10 @@ function UploadPage() {
       const formData = new FormData();
       formData.append("image", file);
 
-      const response = await axios.post(
-        "http://127.0.0.1:5000/predict",
-        formData
-      );
+    const response = await axios.post(
+  "https://neuroscan-ai-4glb.onrender.com/predict",
+  formData
+);
 
       if (response.data?.success) {
         navigate("/result", {
