@@ -205,22 +205,16 @@ test_ds = tf.keras.utils.image_dataset_from_directory(
 
 data_augmentation = keras.Sequential(
     [
-        layers.RandomFlip(
-            "horizontal"
-        ),
+        layers.RandomFlip("horizontal"),
 
-        layers.RandomRotation(
-            0.05
-        ),
+        layers.RandomRotation(0.08),
 
         layers.RandomZoom(
-            height_factor=(-0.08, 0.08),
-            width_factor=(-0.08, 0.08)
+            height_factor=(-0.12, 0.12),
+            width_factor=(-0.12, 0.12)
         ),
 
-        layers.RandomContrast(
-            0.10
-        ),
+        layers.RandomContrast(0.15),
     ],
     name="data_augmentation"
 )
@@ -468,7 +462,7 @@ base_model.trainable = True
 
 fine_tune_from = max(
     0,
-    len(base_model.layers) - 40
+    len(base_model.layers) - 80
 )
 
 
